@@ -1,11 +1,20 @@
 package com.epam.myroniuk.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency {
+    @JsonProperty("txt")
     private String name;
+
+    @JsonProperty("rate")
     private Double rate;
+
+    @JsonProperty("exchangedate")
     private LocalDate date;
 
     public Currency() {
@@ -39,6 +48,10 @@ public class Currency {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void setDate(String date) {
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     @Override

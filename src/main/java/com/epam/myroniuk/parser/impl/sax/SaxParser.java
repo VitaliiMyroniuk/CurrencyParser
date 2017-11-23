@@ -14,12 +14,10 @@ public class SaxParser implements CurrencyParser {
     @Override
     public List<Currency> parse(String path) throws ParserConfigurationException, SAXException, IOException {
         URL url = new URL(path);
-
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         CurrencyHandler handler = new CurrencyHandler();
         parser.parse(url.openStream(), handler);
-
         return handler.getCurrencies();
     }
 }
