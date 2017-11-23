@@ -1,4 +1,4 @@
-package com.epam.myroniuk.parser.impl;
+package com.epam.myroniuk.parser.impl.dom;
 
 import com.epam.myroniuk.entity.Currency;
 import com.epam.myroniuk.parser.CurrencyParser;
@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DOMParser implements CurrencyParser {
+public class DomParser implements CurrencyParser {
     @Override
     public List<Currency> parse(String path) throws ParserConfigurationException, IOException, SAXException {
         URL url = new URL(path);
@@ -26,8 +26,8 @@ public class DOMParser implements CurrencyParser {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(url.openStream());
-        NodeList nodes = document.getElementsByTagName("currency");
 
+        NodeList nodes = document.getElementsByTagName("currency");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {

@@ -8,6 +8,9 @@ public class Currency {
     private Double rate;
     private LocalDate date;
 
+    public Currency() {
+    }
+
     public Currency(String name, Double rate, LocalDate date) {
         this.name = name;
         this.rate = rate;
