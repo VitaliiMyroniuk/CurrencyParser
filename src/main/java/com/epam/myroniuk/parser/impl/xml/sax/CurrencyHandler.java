@@ -1,4 +1,4 @@
-package com.epam.myroniuk.parser.impl.sax;
+package com.epam.myroniuk.parser.impl.xml.sax;
 
 import com.epam.myroniuk.entity.Currency;
 import org.xml.sax.Attributes;

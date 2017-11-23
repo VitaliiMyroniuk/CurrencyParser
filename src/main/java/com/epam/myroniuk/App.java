@@ -2,23 +2,20 @@ package com.epam.myroniuk;
 
 import com.epam.myroniuk.entity.Currency;
 import com.epam.myroniuk.parser.CurrencyParser;
-import com.epam.myroniuk.parser.impl.dom.DomParser;
-import com.epam.myroniuk.parser.impl.json.JsonParser;
-import com.epam.myroniuk.parser.impl.sax.SaxParser;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import com.epam.myroniuk.parser.impl.xml.dom.DomParser;
+import com.epam.myroniuk.parser.impl.json.JacksonParser;
+import com.epam.myroniuk.parser.impl.xml.sax.SaxParser;
 import java.util.List;
 
 public class App {
     private static final String XML_URL = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
     private static final String JSON_URL = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
 
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
+    public static void main(String[] args) throws Exception {
         // Parsers
         CurrencyParser domParser = new DomParser();
         CurrencyParser saxParser = new SaxParser();
-        CurrencyParser jsonParser = new JsonParser();
+        CurrencyParser jacksonParser = new JacksonParser();
 
         // Result of DOM parsing
         List<Currency> currencies1 = domParser.parse(XML_URL);
@@ -37,8 +34,8 @@ public class App {
         System.out.println("\n ---------------------------------------- \n");
 
         // Result of JSON parsing
-        List<Currency> currencies3 = jsonParser.parse(JSON_URL);
-        System.out.println("JSON Parser: ");
+        List<Currency> currencies3 = jacksonParser.parse(JSON_URL);
+        System.out.println("Jackson Parser: ");
         for (int i = 0; i < 5; i++) {
             System.out.println(currencies3.get(i));
         }
