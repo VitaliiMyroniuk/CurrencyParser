@@ -1,6 +1,7 @@
 package com.epam.myroniuk;
 
 import com.epam.myroniuk.entity.Currency;
+import com.epam.myroniuk.parser.CurrencyParser;
 import com.epam.myroniuk.parser.impl.dom.DomParser;
 import com.epam.myroniuk.parser.impl.json.JsonParser;
 import com.epam.myroniuk.parser.impl.sax.SaxParser;
@@ -15,9 +16,9 @@ public class App {
 
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
         // Parsers
-        DomParser domParser = new DomParser();
-        SaxParser saxParser = new SaxParser();
-        JsonParser jsonParser = new JsonParser();
+        CurrencyParser domParser = new DomParser();
+        CurrencyParser saxParser = new SaxParser();
+        CurrencyParser jsonParser = new JsonParser();
 
         // Result of DOM parsing
         List<Currency> currencies1 = domParser.parse(XML_URL);

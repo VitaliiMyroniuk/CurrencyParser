@@ -31,16 +31,16 @@ public class CurrencyHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
+        int index = currencies.size() - 1;
         switch (qName) {
             case "txt":
-                currencies.get(currencies.size() - 1).setName(textContent);
+                currencies.get(index).setName(textContent);
                 break;
             case "rate":
-                currencies.get(currencies.size() - 1).setRate(Double.parseDouble(textContent));
+                currencies.get(index).setRate(Double.parseDouble(textContent));
                 break;
             case "exchangedate":
-                currencies.get(currencies.size() - 1).setDate(LocalDate.parse(textContent,
-                                                              DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+                currencies.get(index).setDate(LocalDate.parse(textContent, DateTimeFormatter.ofPattern("dd.MM.yyyy")));
                 break;
         }
     }

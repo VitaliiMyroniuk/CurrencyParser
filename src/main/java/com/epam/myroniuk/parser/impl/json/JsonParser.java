@@ -13,6 +13,6 @@ public class JsonParser implements CurrencyParser {
     public List<Currency> parse(String path) throws IOException {
         URL url = new URL(path);
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(url, new TypeReference<List<Currency>>() {});
+        return objectMapper.readValue(url, new TypeReference<List<Currency>>(){});
     }
 }
