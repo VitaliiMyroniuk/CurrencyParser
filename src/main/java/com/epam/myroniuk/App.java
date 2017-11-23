@@ -33,7 +33,7 @@ public class App {
         }
         System.out.println("\n ---------------------------------------- \n");
 
-        // Result of JSON parsing
+        // Result of Jackson parsing
         List<Currency> currencies3 = jacksonParser.parse(JSON_URL);
         System.out.println("Jackson Parser: ");
         for (int i = 0; i < 5; i++) {
